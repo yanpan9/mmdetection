@@ -24,7 +24,7 @@ class MyDataset(CustomDataset):
 
     def __init__(self, **kwargs):
         super(MyDataset, self).__init__(**kwargs)
-        self.cat2label = {cat: i+1 for i, cat in enumerate{self.CLASSES}}
+        self.cat2label = {cat: i+1 for i, cat in enumerate(self.CLASSES)}
 
     def load_annotations(self, ann_file):
         ''' 
