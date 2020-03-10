@@ -15,10 +15,16 @@ from pycocotools.cocoeval import COCOeval
 from mmdet.core import eval_recalls
 from mmdet.utils import print_log
 from .custom import CustomDataset
+from .coco import CocoDataset
 from .registry import DATASETS
 
 @DATASETS.register_module
-class MyDataset(CustomDataset):
+class MyDataset(CocoDataset):
+
+    CLASSES = ("spot", "rough", "half", "cross")
+
+@DATASETS.register_module
+class MyDataset_(CustomDataset):
 
     CLASSES = ("spot", "rough", "half", "cross")
 
