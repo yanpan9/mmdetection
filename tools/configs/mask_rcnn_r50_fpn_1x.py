@@ -113,7 +113,7 @@ test_cfg = dict(
         mask_thr_binary=0.5))
 # dataset settings
 dataset_type = 'MyDataset'
-data_root = '/home/yanpan/Documents/Datasets/xianshu/'
+data_root = '/home/hezhige/Documents/Datasets/xianshu/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 train_pipeline = [
@@ -142,19 +142,22 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    imgs_per_gpu=2,
-    workers_per_gpu=2,
+    imgs_per_gpu=1,
+    workers_per_gpu=1,
     train=dict(
         type=dataset_type,
-        ann_file=data_root + "train/",
+        ann_file=data_root + "annotations/train.json",
+        img_prefix=data_root + "train/",
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
-        ann_file=data_root + "valid/",
+        ann_file=data_root + "annotations/valid.json",
+        img_prefix=data_root + "valid/",
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
-        ann_file=data_root + "valid/",
+        ann_file=data_root + "annotations/valid.json",
+        img_prefix=data_root + "valid/",
         pipeline=test_pipeline))
 evaluation = dict(interval=1, metric=['bbox', 'segm'])
 # optimizer
