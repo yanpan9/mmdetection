@@ -21,7 +21,7 @@ from .registry import DATASETS
 @DATASETS.register_module
 class MyDataset(CocoDataset):
 
-    CLASSES = ("spot", "rough", "half", "cross")
+    CLASSES = ("cross", "half", "rough", "spot")
 
 @DATASETS.register_module
 class MyDataset_(CustomDataset):
