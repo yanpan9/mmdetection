@@ -1,10 +1,10 @@
 # model settings
 model = dict(
     type='MaskRCNN',
-    pretrained='torchvision://resnet50',
+    pretrained='torchvision://resnet101',
     backbone=dict(
         type='ResNet',
-        depth=50,
+        depth=101,
         num_stages=4,
         out_indices=(0, 1, 2, 3),
         frozen_stages=1,
@@ -142,8 +142,8 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    imgs_per_gpu=2,
-    workers_per_gpu=2,
+    imgs_per_gpu=1,
+    workers_per_gpu=1,
     train=dict(
         type=dataset_type,
         ann_file=data_root + "annotations/train.json",
@@ -161,7 +161,7 @@ data = dict(
         pipeline=test_pipeline))
 evaluation = dict(interval=1, metric=['bbox', 'segm'])
 # optimizer
-optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001)
+optimizer = dict(type='SGD', lr=0.005, momentum=0.9, weight_decay=0.0001)
 optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
 # learning policy
 lr_config = dict(
@@ -173,7 +173,7 @@ lr_config = dict(
 checkpoint_config = dict(interval=4)
 # yapf:disable
 log_config = dict(
-    interval=10,
+    interval=20,
     hooks=[
         dict(type='TextLoggerHook'),
         # dict(type='TensorboardLoggerHook')
@@ -183,7 +183,7 @@ log_config = dict(
 total_epochs = 48
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-work_dir = '/tmp/work_dirs/mask_rcnn_r50_fpn_4x'
+work_dir = '/tmp/work_dirs/mask_rcnn_r101_fpn_4x'
 load_from = None
 resume_from = None
 workflow = [('train', 1)]
