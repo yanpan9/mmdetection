@@ -169,8 +169,8 @@ lr_config = dict(
     warmup='linear',
     warmup_iters=500,
     warmup_ratio=1.0 / 3,
-    step=[36, 55])
-checkpoint_config = dict(interval=4)
+    step=[40, 55])
+checkpoint_config = dict(interval=10)
 # yapf:disable
 log_config = dict(
     interval=20,
@@ -180,10 +180,10 @@ log_config = dict(
     ])
 # yapf:enable
 # runtime settings
-total_epochs = 60
+total_epochs = 100
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-work_dir = './work_dirs/mask_rcnn_r101_fpn_4x'
+work_dir = './work_dirs/mask_rcnn_r101_fpn'
 load_from = None
 resume_from = None
 workflow = [('train', 1)]
