@@ -1,5 +1,6 @@
 import sys
 import copy
+import torch
 from ..registry import DETECTORS
 from .two_stage import TwoStageDetector
 from .. import builder
