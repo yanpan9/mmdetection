@@ -38,9 +38,6 @@ class MyMaskRCNN(TwoStageDetector):
         double_mask_roi_extractor = copy.deepcopy(mask_roi_extractor)
         double_mask_roi_extractor.roi_layer.out_size *= 2
         self.double_mask_roi_extractor = builder.build_roi_extractor(double_mask_roi_extractor)
-
-    def init_weights(self, pretrained=None):
-        super(MyMaskRCNN, self).init_weights(pretrained)
         self.double_mask_roi_extractor.init_weights()
 
     def forward_dummy(self, img):
