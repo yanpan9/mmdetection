@@ -33,7 +33,8 @@ model = dict(
         roi_layer=dict(type='RoIAlign', out_size=7, sample_num=2),
         out_channels=1024,
         featmap_strides=[4, 8, 16, 32]),
-    type='BBoxHead',
+    bbox_head=dict(
+        type='BBoxHead',
         with_avg_pool=True,
         roi_feat_size=7,
         in_channels=2048,
