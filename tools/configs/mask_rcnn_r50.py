@@ -6,6 +6,8 @@ model = dict(
         type='ResNet',
         depth=50,
         num_stages=3,
+        strides=(1, 2, 2),
+        dilations=(1, 1, 1),
         out_indices=(2,),
         frozen_stages=1,
         style='pytorch'),
@@ -14,6 +16,7 @@ model = dict(
         depth=50,
         stage=3,
         stride=2,
+        dilation=1,
         style="pytorch",
     ),
     rpn_head=dict(
